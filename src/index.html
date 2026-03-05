@@ -123,7 +123,10 @@
               <li>Email campaign graphics</li>
               <li>Event signage</li>
             </ul>
-            <div data-image-placeholder="Promotional_Collateral"></div>
+            <button class="sample-thumb" onclick="openModal('pdf-modal')" aria-label="View sales sheet samples">
+              <img src="assets/Media/ELED Sales Sheets Mockup.png" alt="EL Education sub-brand sales sheets — campaign collateral sample">
+              <div class="sample-thumb-overlay"><span>View Sample</span></div>
+            </button>
           </div>
         </div>
       </div>
@@ -247,6 +250,14 @@
       <p class="footer-text">Integral Media is a division of <a href="https://www.integral-ed.com/" target="_blank" rel="noopener noreferrer">Integral Ed Services, LLC</a></p>
     </div>
   </footer>
+
+  <!-- PDF Modal -->
+  <div id="pdf-modal" class="pdf-modal" role="dialog" aria-modal="true" aria-label="Sales Sheets for Sub-Brands">
+    <div class="pdf-modal-inner">
+      <button class="pdf-modal-close" onclick="closeModal('pdf-modal')" aria-label="Close">✕</button>
+      <iframe src="assets/Media/Sales%20Sheets%20for%20Sub-Brands.pdf" title="Sales Sheets for Sub-Brands"></iframe>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>

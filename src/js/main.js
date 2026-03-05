@@ -44,6 +44,41 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// PDF Modal
+function openModal(id) {
+    const modal = document.getElementById(id);
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeModal(id) {
+    const modal = document.getElementById(id);
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Close on backdrop click
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('pdf-modal')) {
+        e.target.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+// Close on Escape
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.pdf-modal.active').forEach(m => {
+            m.classList.remove('active');
+        });
+        document.body.style.overflow = '';
+    }
+});
+
 // ImagePlaceholder Component
 function createImagePlaceholder(label) {
     const placeholder = document.createElement('div');
