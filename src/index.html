@@ -256,9 +256,25 @@
           <div class="pdf-canvas-wrap" id="pdfWrapB"><canvas id="pdfCanvasB"></canvas></div>
         </div>
         <div class="pdf-controls">
-          <button class="pdf-nav-btn" id="pdfPrev" onclick="PdfGallery.prev()" aria-label="Previous page" disabled>&#8592;</button>
-          <span class="pdf-page-info" id="pdfPageInfo">&#8212; / &#8212;</span>
-          <button class="pdf-nav-btn" id="pdfNext" onclick="PdfGallery.next()" aria-label="Next page" disabled>&#8594;</button>
+          <div class="pdf-controls-spacer"></div>
+          <div class="pdf-controls-nav">
+            <button class="pdf-nav-btn" id="pdfPrev" onclick="PdfGallery.prev()" aria-label="Previous page" disabled>&#8592;</button>
+            <span class="pdf-page-info" id="pdfPageInfo">&#8212; / &#8212;</span>
+            <button class="pdf-nav-btn" id="pdfNext" onclick="PdfGallery.next()" aria-label="Next page" disabled>&#8594;</button>
+          </div>
+          <div class="pdf-controls-actions">
+            <button class="pdf-zoom-btn" id="pdfZoom" onclick="PdfGallery.toggleZoom()" aria-label="Expand page to full width">
+              <svg class="icon-expand" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="1,5 1,1 5,1"/><polyline points="11,1 15,1 15,5"/>
+                <polyline points="15,11 15,15 11,15"/><polyline points="5,15 1,15 1,11"/>
+              </svg>
+              <svg class="icon-compress" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none">
+                <polyline points="5,1 5,5 1,5"/><polyline points="15,5 11,5 11,1"/>
+                <polyline points="11,15 11,11 15,11"/><polyline points="1,11 5,11 5,15"/>
+              </svg>
+              <span class="pdf-zoom-label">Expand</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>

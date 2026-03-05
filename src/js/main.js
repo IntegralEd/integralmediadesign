@@ -73,6 +73,7 @@ const PdfGallery = (() => {
     let total      = 0;
     let activeWrap = 'A';
     let busy       = false;
+    let zoomMode   = false;
 
     const wrap   = id => document.getElementById('pdfWrap'   + id);
     const canvas = id => document.getElementById('pdfCanvas' + id);
@@ -80,13 +81,15 @@ const PdfGallery = (() => {
     async function renderToWrap(pageNum, wrapId) {
         const page  = await pdf.getPage(pageNum);
         const stage = document.getElementById('pdfStage');
-        const pad   = 32;
+        const pad   = 24;
         const availW = stage.clientWidth  - pad * 2;
         const availH = stage.clientHeight - pad * 2;
 
-        const vp1     = page.getViewport({ scale: 1 });
-        const scale   = Math.min(availW / vp1.width, availH / vp1.height);
-        const dpr     = window.devicePixelRatio || 1;
+        const vp1  = page.getViewport({ scale: 1 });
+        const scale = zoomMode
+            ? availW / vp1.width
+            : Math.min(availW / vp1.width, availH / vp1.height);
+        const dpr      = window.devicePixelRatio || 1;
         const viewport = page.getViewport({ scale: scale * dpr });
 
         const c = canvas(wrapId);
@@ -110,27 +113,45 @@ const PdfGallery = (() => {
         if (busy || n < 1 || n > total) return;
         busy = true;
 
-        const incoming = activeWrap === 'A' ? 'B' : 'A';
-        const startX   = direction === 'forward' ? '100%' : '-100%';
-        const exitX    = direction === 'forward' ? '-100%' : '100%';
+        if (zoomMode) {
+            // Fade transition in zoom mode (slide conflicts with scrollable content)
+            const activeEl = wrap(activeWrap);
+            activeEl.style.transition = 'opacity 0.18s ease';
+            activeEl.style.opacity = '0';
+            await new Promise(r => setTimeout(r, 200));
 
-        // Park incoming off-screen instantly, then render
-        slide(incoming, startX, false);
-        await renderToWrap(n, incoming);
+            await renderToWrap(n, activeWrap);
+            document.getElementById('pdfStage').scrollTop = 0;
 
-        // Force a paint so the transition fires correctly
-        wrap(incoming).getBoundingClientRect();
+            activeEl.style.opacity = '1';
+            await new Promise(r => setTimeout(r, 200));
+        } else {
+            const incoming = activeWrap === 'A' ? 'B' : 'A';
+            const startX   = direction === 'forward' ? '100%' : '-100%';
+            const exitX    = direction === 'forward' ? '-100%' : '100%';
 
-        // Slide both panels
-        slide(activeWrap, exitX, true);
-        slide(incoming, '0%', true);
+            slide(incoming, startX, false);
+            await renderToWrap(n, incoming);
+            wrap(incoming).getBoundingClientRect();
 
-        await new Promise(r => setTimeout(r, 430));
+            slide(activeWrap, exitX, true);
+            slide(incoming, '0%', true);
+            await new Promise(r => setTimeout(r, 430));
+            activeWrap = incoming;
+        }
 
-        activeWrap = incoming;
-        current    = n;
+        current = n;
         updateControls();
         busy = false;
+    }
+
+    function updateZoomButton() {
+        const btn = document.getElementById('pdfZoom');
+        if (!btn) return;
+        btn.querySelector('.icon-expand').style.display   = zoomMode ? 'none' : '';
+        btn.querySelector('.icon-compress').style.display = zoomMode ? '' : 'none';
+        btn.querySelector('.pdf-zoom-label').textContent  = zoomMode ? 'Fit' : 'Expand';
+        btn.setAttribute('aria-label', zoomMode ? 'Fit page to screen' : 'Expand page to full width');
     }
 
     function updateControls() {
@@ -140,6 +161,7 @@ const PdfGallery = (() => {
         if (info) info.textContent = `${current} / ${total}`;
         if (prev) prev.disabled = current <= 1;
         if (next) next.disabled = current >= total;
+        updateZoomButton();
     }
 
     return {
@@ -172,6 +194,39 @@ const PdfGallery = (() => {
                 modal.classList.remove('active');
                 document.body.style.overflow = '';
             }
+        },
+
+        async toggleZoom() {
+            if (busy) return;
+            zoomMode = !zoomMode;
+
+            const stage        = document.getElementById('pdfStage');
+            const inactiveId   = activeWrap === 'A' ? 'B' : 'A';
+            const inactiveEl   = wrap(inactiveId);
+            const activeEl     = wrap(activeWrap);
+
+            stage.classList.toggle('pdf-zoomed', zoomMode);
+
+            if (zoomMode) {
+                // Hide inactive wrap; release active from absolute flow
+                inactiveEl.style.display  = 'none';
+                activeEl.style.transition = 'none';
+                activeEl.style.position   = 'relative';
+                activeEl.style.inset      = 'auto';
+                activeEl.style.transform  = 'none';
+            } else {
+                // Restore both wraps for slide mode
+                inactiveEl.style.display  = '';
+                activeEl.style.position   = '';
+                activeEl.style.inset      = '';
+                activeEl.style.transition = 'none';
+                slide(activeWrap, '0%',   false);
+                slide(inactiveId, '100%', false);
+                stage.scrollTop = 0;
+            }
+
+            await renderToWrap(current, activeWrap);
+            updateZoomButton();
         },
 
         next() { goToPage(current + 1, 'forward');  },
