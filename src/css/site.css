@@ -13,3 +13,28 @@
 }
 
 /* Site-specific component extensions can go here */
+
+/* Responsive video embed (16:9) */
+.video-embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  margin-top: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Work sample image / GIF */
+.work-sample {
+  width: 100%;
+  margin-top: 1.5rem;
+  border-radius: 8px;
+  display: block;
+}
