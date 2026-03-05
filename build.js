@@ -37,6 +37,11 @@ function deleteRecursive(dirPath) {
 
 console.log('🏗️  Starting build...\n');
 
+// Read site slug for analytics segmentation
+const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'), 'utf8'));
+const siteSlug = pkg.siteSlug || 'unknown';
+console.log(`📊 Site slug: ${siteSlug}\n`);
+
 // Clear dist directory
 const distDir = path.join(__dirname, 'dist');
 if (fs.existsSync(distDir)) {
@@ -48,7 +53,17 @@ if (fs.existsSync(distDir)) {
 fs.mkdirSync(distDir, { recursive: true });
 console.log('✓ Created dist directory\n');
 
-// Load chat widget for injection
+// Load analytics snippet for head injection
+const analyticsPath = path.join(__dirname, 'vendor', 'integralthemes', 'components', 'analytics.html');
+let analyticsHtml = '';
+if (fs.existsSync(analyticsPath)) {
+  analyticsHtml = fs.readFileSync(analyticsPath, 'utf8');
+  console.log('✓ Loaded analytics snippet for injection\n');
+} else {
+  console.log('⚠ Analytics snippet not found, pages will be built without it\n');
+}
+
+// Load chat widget for body injection
 const widgetPath = path.join(__dirname, 'vendor', 'integralthemes', 'components', 'widgets.html');
 let widgetHtml = '';
 if (fs.existsSync(widgetPath)) {
@@ -67,13 +82,20 @@ htmlFiles.forEach(file => {
   if (fs.existsSync(srcPath)) {
     let htmlContent = fs.readFileSync(srcPath, 'utf8');
 
-    // Inject widget before </body> tag if widget exists
+    // Inject analytics + site_name before </head>
+    if (analyticsHtml) {
+      const siteNameScript = `<script>window.IE_SITE_NAME = '${siteSlug}';</script>`;
+      htmlContent = htmlContent.replace('</head>', `${siteNameScript}\n${analyticsHtml}\n</head>`);
+    }
+
+    // Inject chat widget before </body>
     if (widgetHtml) {
       htmlContent = htmlContent.replace('</body>', `${widgetHtml}\n</body>`);
     }
 
+    const tags = [analyticsHtml ? 'analytics' : '', widgetHtml ? 'widget' : ''].filter(Boolean);
     fs.writeFileSync(destPath, htmlContent, 'utf8');
-    console.log(`  ✓ ${file}${widgetHtml ? ' (with widget)' : ''}`);
+    console.log(`  ✓ ${file}${tags.length ? ` (${tags.join(', ')})` : ''}`);
   } else {
     console.log(`  ⚠ ${file} (not found)`);
   }
