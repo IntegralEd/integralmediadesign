@@ -1,0 +1,15 @@
+/**
+ * Site-Specific Overrides
+ *
+ * Load this AFTER the shared theme.css to override tokens or add custom styles.
+ * Use CSS variables from theme/tokens.css to maintain consistency.
+ */
+
+:root {
+  /* Example overrides (uncomment to use):
+  --primary: #4A3AFF;
+  --primary-dark: #3829CC;
+  */
+}
+
+/* Site-specific component extensions can go here */

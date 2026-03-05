@@ -1,0 +1,29 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Redirect .org domain to .com (canonical domain)
+[[redirects]]
+  from = "https://integralcareerpathways.org/*"
+  to = "https://integralcareerpathways.com/:splat"
+  status = 301
+  force = true
+
+# Redirect www subdomain to apex domain
+[[redirects]]
+  from = "https://www.integralcareerpathways.com/*"
+  to = "https://integralcareerpathways.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.integralcareerpathways.org/*"
+  to = "https://integralcareerpathways.com/:splat"
+  status = 301
+  force = true
+
+# Custom 404 page (optional)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 404

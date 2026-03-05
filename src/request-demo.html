@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Staging Safety: Prevent Search Indexing -->
+  <meta name="robots" content="noindex,nofollow">
+
+  <title>Request a Demo | Integral Media</title>
+  <meta name="description" content="Request a demo to explore how we can help your organization communicate more effectively through keynote design, video production, and strategic campaign assets.">
+
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Request a Demo | Integral Media">
+  <meta property="og:description" content="Full service media and communications for nonprofits and education organizations.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- Shared Theme -->
+  <link rel="stylesheet" href="/vendor/integralthemes/theme/theme.css">
+
+  <!-- Site Overrides -->
+  <link rel="stylesheet" href="css/site.css">
+  <style>
+    .form-container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: var(--spacing-md);
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      font-family: var(--font-primary);
+      font-size: 1rem;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      transition: border-color var(--transition-fast);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-md);
+    }
+
+    .form-submit {
+      text-align: center;
+      margin-top: var(--spacing-lg);
+    }
+
+    .form-submit .btn {
+      min-width: 200px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xs);
+    }
+
+    .checkbox-group label {
+      display: flex;
+      align-items: center;
+      font-weight: 400;
+      cursor: pointer;
+      padding: 0.5rem 0;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: auto;
+      margin-right: var(--spacing-xs);
+      cursor: pointer;
+    }
+
+    .other-input {
+      margin-top: var(--spacing-xs);
+      margin-left: 1.5rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .success-message {
+      text-align: center;
+      padding: var(--spacing-xl);
+      background: var(--primary-light-bg);
+      border: 2px solid var(--primary);
+      border-radius: var(--radius-md);
+      margin: var(--spacing-xl) 0;
+    }
+
+    .success-message h3 {
+      color: var(--primary-dark);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">Integral Media</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="approach.html" class="nav-link">What We Do</a></li>
+        <li><a href="case-studies.html" class="nav-link">Case Studies</a></li>
+        <li><a href="request-demo.html" class="nav-link"><span class="btn btn-primary" style="padding: 0.5rem 1.25rem;">Request a Demo</span></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" style="min-height: 50vh;">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Request a Demo</h1>
+        <p class="hero-subtitle">
+          Let's discuss how we can help your organization translate complex ideas into compelling media.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form Section -->
+  <section class="section">
+    <div class="container">
+      <div class="form-container">
+
+        <!-- Success Message (hidden by default) -->
+        <div id="success-message" class="success-message hidden">
+          <h3>Thank you for your interest!</h3>
+          <p>We've received your request and will be in touch within 1-2 business days to schedule a conversation.</p>
+          <p style="margin-top: var(--spacing-md);"><a href="index.html" class="btn btn-secondary">Return to Home</a></p>
+        </div>
+
+        <!-- Form -->
+        <form id="demo-form" action="https://api.web3forms.com/submit" method="POST">
+
+          <!-- Web3Forms Access Key -->
+          <input type="hidden" name="access_key" value="b6e0de3f-832b-43e2-82f3-a5e48082489a">
+
+          <!-- Subject -->
+          <input type="hidden" name="subject" value="New Demo Request - Integral Media">
+
+          <!-- Honeypot for bot protection -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+          <!-- Attribution Fields (populated by JS) -->
+          <input type="hidden" name="source_url" id="source_url">
+          <input type="hidden" name="referrer" id="referrer">
+          <input type="hidden" name="utm_source" id="utm_source">
+          <input type="hidden" name="utm_medium" id="utm_medium">
+          <input type="hidden" name="utm_campaign" id="utm_campaign">
+          <input type="hidden" name="utm_content" id="utm_content">
+          <input type="hidden" name="utm_term" id="utm_term">
+
+          <!-- Name Fields -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first_name">First Name *</label>
+              <input type="text" id="first_name" name="first_name" required>
+            </div>
+            <div class="form-group">
+              <label for="last_name">Last Name *</label>
+              <input type="text" id="last_name" name="last_name" required>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <!-- Organization -->
+          <div class="form-group">
+            <label for="organization">Organization *</label>
+            <input type="text" id="organization" name="organization" required>
+          </div>
+
+          <!-- Role -->
+          <div class="form-group">
+            <label for="role">Role / Title</label>
+            <input type="text" id="role" name="role" placeholder="e.g., Executive Director, Communications Manager">
+          </div>
+
+          <!-- What are you exploring? (Multi-select) -->
+          <div class="form-group">
+            <label>What are you exploring? (Select all that apply) *</label>
+            <div class="checkbox-group">
+              <label>
+                <input type="checkbox" name="exploring[]" value="Keynote and Presentation Design">
+                Keynote and Presentation Design
+              </label>
+              <label>
+                <input type="checkbox" name="exploring[]" value="Instructional Video Production">
+                Instructional Video Production
+              </label>
+              <label>
+                <input type="checkbox" name="exploring[]" value="PSA / Public Awareness Campaigns">
+                PSA / Public Awareness Campaigns
+              </label>
+              <label>
+                <input type="checkbox" name="exploring[]" value="Campaign Assets / Collateral Design">
+                Campaign Assets / Collateral Design
+              </label>
+              <label>
+                <input type="checkbox" name="exploring[]" value="Impact Reports / Annual Publications">
+                Impact Reports / Annual Publications
+              </label>
+              <label>
+                <input type="checkbox" name="exploring[]" value="Landing Page Design Systems">
+                Landing Page Design Systems
+              </label>
+              <label>
+                <input type="checkbox" name="exploring[]" value="Not sure yet">
+                Not sure yet
+              </label>
+              <label>
+                <input type="checkbox" id="exploring-other" name="exploring[]" value="Other">
+                Other needs
+              </label>
+              <input type="text" id="exploring-other-text" name="exploring_other_text" class="other-input hidden" placeholder="Please specify...">
+            </div>
+          </div>
+
+          <!-- Desired Next Step -->
+          <div class="form-group">
+            <label for="next_step">Desired next step</label>
+            <select id="next_step" name="next_step">
+              <option value="">Select an option</option>
+              <option value="Schedule a Zoom demo call">Schedule a Zoom demo call</option>
+              <option value="Review a tailored portfolio of our work">Review a tailored portfolio of our work</option>
+            </select>
+          </div>
+
+          <!-- Message -->
+          <div class="form-group">
+            <label for="message">Tell us about your goals (optional)</label>
+            <textarea id="message" name="message" placeholder="Share any context about what you're hoping to build or explore..."></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary">Submit Request</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <p class="footer-text">Integral Media is a division of <a href="https://www.integral-ed.com/" target="_blank" rel="noopener noreferrer">Integral Ed Services, LLC</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Capture attribution data on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Capture source URL
+      document.getElementById('source_url').value = window.location.href;
+
+      // Capture referrer
+      document.getElementById('referrer').value = document.referrer || '';
+
+      // Parse UTM parameters from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      document.getElementById('utm_source').value = urlParams.get('utm_source') || '';
+      document.getElementById('utm_medium').value = urlParams.get('utm_medium') || '';
+      document.getElementById('utm_campaign').value = urlParams.get('utm_campaign') || '';
+      document.getElementById('utm_content').value = urlParams.get('utm_content') || '';
+      document.getElementById('utm_term').value = urlParams.get('utm_term') || '';
+
+      // Handle "Other needs" text field visibility
+      const exploringOtherCheckbox = document.getElementById('exploring-other');
+      const exploringOtherText = document.getElementById('exploring-other-text');
+
+      exploringOtherCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+          exploringOtherText.classList.remove('hidden');
+        } else {
+          exploringOtherText.classList.add('hidden');
+          exploringOtherText.value = '';
+        }
+      });
+    });
+
+    // Handle form submission
+    const form = document.getElementById('demo-form');
+    const successMessage = document.getElementById('success-message');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      // Validate at least one checkbox is selected
+      const checkboxes = form.querySelectorAll('input[name="exploring[]"]');
+      const isChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+
+      if (!isChecked) {
+        alert('Please select at least one option for what you are exploring.');
+        return;
+      }
+
+      const formData = new FormData(form);
+      const submitButton = form.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.textContent;
+
+      // If "Other" is checked and has text, append it to the Other value
+      const exploringOther = document.getElementById('exploring-other');
+      const exploringOtherText = document.getElementById('exploring-other-text');
+      if (exploringOther.checked && exploringOtherText.value.trim()) {
+        // Remove the generic "Other" value
+        formData.delete('exploring[]');
+
+        // Re-add all checked values
+        checkboxes.forEach(checkbox => {
+          if (checkbox.checked) {
+            if (checkbox.id === 'exploring-other') {
+              formData.append('exploring[]', `Other: ${exploringOtherText.value.trim()}`);
+            } else {
+              formData.append('exploring[]', checkbox.value);
+            }
+          }
+        });
+      }
+
+      // Disable button and show loading state
+      submitButton.disabled = true;
+      submitButton.textContent = 'Submitting...';
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+          // Hide form and show success message
+          form.classList.add('hidden');
+          successMessage.classList.remove('hidden');
+
+          // Scroll to success message
+          successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (error) {
+        alert('There was an error submitting the form. Please try again or contact us at info@integral-ed.com');
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+      }
+    });
+  </script>
+</body>
+</html>

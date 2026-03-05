@@ -1,0 +1,5 @@
+# Staging Safety: Disallow all crawlers
+# This is a playground/demo site and should not be indexed
+
+User-agent: *
+Disallow: /
