@@ -22,6 +22,9 @@
   <!-- Shared Theme -->
   <link rel="stylesheet" href="/vendor/integralthemes/theme/theme.css">
 
+  <!-- Popout Frame Component -->
+  <link rel="stylesheet" href="/vendor/integralthemes/components/popout-frame.css">
+
   <!-- Site Overrides -->
   <link rel="stylesheet" href="css/site.css">
 </head>
@@ -247,9 +250,9 @@
   </footer>
 
   <!-- PDF Gallery Modal -->
-  <div id="pdf-modal" class="pdf-modal" role="dialog" aria-modal="true" aria-label="Sales Sheets for Sub-Brands">
-    <div class="pdf-modal-inner">
-      <button class="pdf-modal-close" onclick="PdfGallery.close()" aria-label="Close">&#10005;</button>
+  <div id="pdf-modal" class="popout-frame" role="dialog" aria-modal="true" aria-label="Sales Sheets for Sub-Brands" data-pdf-src="assets/Media/Sales%20Sheets%20for%20Sub-Brands.pdf">
+    <div class="popout-inner">
+      <button class="popout-close" onclick="PdfGallery.close()" aria-label="Close">&#10005;</button>
       <div class="pdf-viewer">
         <div class="pdf-stage" id="pdfStage">
           <div class="pdf-canvas-wrap" id="pdfWrapA"><canvas id="pdfCanvasA"></canvas></div>
@@ -281,16 +284,16 @@
   </div>
 
   <!-- Video Modal -->
-  <div id="video-modal" class="pdf-modal video-modal" role="dialog" aria-modal="true" aria-label="Place-Based Partnerships Video">
-    <div class="pdf-modal-inner">
-      <button class="pdf-modal-close" onclick="closeVideoModal('video-modal')" aria-label="Close">&#10005;</button>
+  <div id="video-modal" class="popout-frame popout-video" role="dialog" aria-modal="true" aria-label="Place-Based Partnerships Video">
+    <div class="popout-inner">
+      <button class="popout-close" onclick="closeVideoModal('video-modal')" aria-label="Close">&#10005;</button>
       <iframe data-video-src src="" title="Place-Based Partnerships — Instructional Video"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="/vendor/integralthemes/components/popout-frame.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
