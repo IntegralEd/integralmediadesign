@@ -118,7 +118,7 @@
               <li>Email campaign graphics</li>
               <li>Event signage</li>
             </ul>
-            <button class="sample-thumb" onclick="openModal('pdf-modal')" aria-label="View sales sheet samples">
+            <button class="sample-thumb" onclick="PdfGallery.open()" aria-label="View sales sheet samples">
               <img src="assets/Media/ELED Sales Sheets Mockup.png" alt="EL Education sub-brand sales sheets — campaign collateral sample">
               <div class="sample-thumb-overlay"><span>View Sample</span></div>
             </button>
@@ -246,11 +246,21 @@
     </div>
   </footer>
 
-  <!-- PDF Modal -->
+  <!-- PDF Gallery Modal -->
   <div id="pdf-modal" class="pdf-modal" role="dialog" aria-modal="true" aria-label="Sales Sheets for Sub-Brands">
     <div class="pdf-modal-inner">
-      <button class="pdf-modal-close" onclick="closeModal('pdf-modal')" aria-label="Close">✕</button>
-      <iframe src="assets/Media/Sales%20Sheets%20for%20Sub-Brands.pdf" title="Sales Sheets for Sub-Brands"></iframe>
+      <button class="pdf-modal-close" onclick="PdfGallery.close()" aria-label="Close">&#10005;</button>
+      <div class="pdf-viewer">
+        <div class="pdf-stage" id="pdfStage">
+          <div class="pdf-canvas-wrap" id="pdfWrapA"><canvas id="pdfCanvasA"></canvas></div>
+          <div class="pdf-canvas-wrap" id="pdfWrapB"><canvas id="pdfCanvasB"></canvas></div>
+        </div>
+        <div class="pdf-controls">
+          <button class="pdf-nav-btn" id="pdfPrev" onclick="PdfGallery.prev()" aria-label="Previous page" disabled>&#8592;</button>
+          <span class="pdf-page-info" id="pdfPageInfo">&#8212; / &#8212;</span>
+          <button class="pdf-nav-btn" id="pdfNext" onclick="PdfGallery.next()" aria-label="Next page" disabled>&#8594;</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -264,6 +274,7 @@
     </div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
