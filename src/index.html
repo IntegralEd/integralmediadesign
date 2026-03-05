@@ -99,15 +99,10 @@
               <li>Captioned accessible exports</li>
               <li>Social-ready cutdowns</li>
             </ul>
-            <div class="video-embed">
-              <iframe
-                src="https://www.youtube.com/embed/NX34X3OjS9s?si=iwx5I0DSRX7XerNp"
-                title="Place-Based Partnerships — Instructional Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
-            </div>
+            <button class="sample-thumb video-thumb" onclick="openVideoModal('video-modal', 'https://www.youtube.com/embed/NX34X3OjS9s')" aria-label="Play Place-Based Partnerships video">
+              <img src="assets/Media/PBP Video Thumbnail.png" alt="Place-Based Partnerships — Instructional Video thumbnail">
+              <div class="sample-thumb-overlay"><span>&#9654; Play</span></div>
+            </button>
           </div>
 
           <!-- 3. Campaign Assets -->
@@ -256,6 +251,16 @@
     <div class="pdf-modal-inner">
       <button class="pdf-modal-close" onclick="closeModal('pdf-modal')" aria-label="Close">✕</button>
       <iframe src="assets/Media/Sales%20Sheets%20for%20Sub-Brands.pdf" title="Sales Sheets for Sub-Brands"></iframe>
+    </div>
+  </div>
+
+  <!-- Video Modal -->
+  <div id="video-modal" class="pdf-modal video-modal" role="dialog" aria-modal="true" aria-label="Place-Based Partnerships Video">
+    <div class="pdf-modal-inner">
+      <button class="pdf-modal-close" onclick="closeVideoModal('video-modal')" aria-label="Close">&#10005;</button>
+      <iframe data-video-src src="" title="Place-Based Partnerships — Instructional Video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
   </div>
 
