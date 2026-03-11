@@ -1,7 +1,7 @@
 {
-  "name": "integralplatforms",
+  "name": "integralmediadesign",
   "version": "1.0.0",
-  "description": "IntegralEd Platform - Modern educational platform",
+  "description": "Integral Ed — Media design microsite for integralmediadesign.com",
   "siteSlug": "integralmediadesign",
   "scripts": {
     "build": "node build.js",
