@@ -3,6 +3,15 @@
   "version": "1.0.0",
   "description": "Integral Ed — Media design microsite for integralmediadesign.com",
   "siteSlug": "integralmediadesign",
+  "footer": {
+    "siteName": "Media &amp; Communications",
+    "pageLinks": [
+      { "href": "index.html",       "label": "Home" },
+      { "href": "#what-we-do",      "label": "What We Do" },
+      { "href": "#case-studies",    "label": "Case Studies" },
+      { "href": "request-demo.html","label": "Request a Demo" }
+    ]
+  },
   "scripts": {
     "build": "node build.js",
     "dev": "python3 -m http.server 8000",

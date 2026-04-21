@@ -131,43 +131,57 @@
     </div>
   </section>
 
-  <!-- How We Work -->
-  <section class="section section-alt">
+  <!-- How We Work (Vertical Timeline) -->
+  <section class="section section-alt" id="how-we-work">
     <div class="container">
-      <div class="service-content">
-        <h2 class="text-center">How We Work</h2>
+      <h2 class="text-center" style="margin-bottom: var(--spacing-xl);">How We Work</h2>
 
-        <div class="process-cards">
-          <div class="process-card">
-            <div class="card-number">1</div>
-            <h3 class="card-title">Discovery</h3>
-            <p class="card-description">
-              Audience research and message alignment.
-            </p>
+      <div class="timeline">
+        <!-- 1. Discovery -->
+        <div class="timeline-item">
+          <div class="timeline-marker">1</div>
+          <div class="timeline-content">
+            <h3>Discovery</h3>
+            <p>Audience research and message alignment.</p>
           </div>
-
-          <div class="process-card">
-            <div class="card-number">2</div>
-            <h3 class="card-title">Narrative Architecture</h3>
-            <p class="card-description">
-              Translate strategy into structured storylines.
-            </p>
+          <div class="timeline-icon-wrapper">
+            <img src="assets/icons/media_and_storytelling.svg" alt="Discovery" class="timeline-icon" role="img">
           </div>
+        </div>
 
-          <div class="process-card">
-            <div class="card-number">3</div>
-            <h3 class="card-title">Design and Production</h3>
-            <p class="card-description">
-              Develop visual system, media assets, and delivery formats.
-            </p>
+        <!-- 2. Narrative Architecture -->
+        <div class="timeline-item">
+          <div class="timeline-marker">2</div>
+          <div class="timeline-content">
+            <h3>Narrative Architecture</h3>
+            <p>Translate strategy into structured storylines.</p>
           </div>
+          <div class="timeline-icon-wrapper">
+            <img src="assets/icons/define.svg" alt="Narrative Architecture" class="timeline-icon" role="img">
+          </div>
+        </div>
 
-          <div class="process-card">
-            <div class="card-number">4</div>
-            <h3 class="card-title">Deployment Support</h3>
-            <p class="card-description">
-              Prepare teams with templates and distribution guidance.
-            </p>
+        <!-- 3. Design and Production -->
+        <div class="timeline-item">
+          <div class="timeline-marker">3</div>
+          <div class="timeline-content">
+            <h3>Design and Production</h3>
+            <p>Develop visual system, media assets, and delivery formats.</p>
+          </div>
+          <div class="timeline-icon-wrapper">
+            <img src="assets/icons/design.svg" alt="Design and Production" class="timeline-icon" role="img">
+          </div>
+        </div>
+
+        <!-- 4. Deployment Support -->
+        <div class="timeline-item">
+          <div class="timeline-marker">4</div>
+          <div class="timeline-content">
+            <h3>Deployment Support</h3>
+            <p>Prepare teams with templates and distribution guidance.</p>
+          </div>
+          <div class="timeline-icon-wrapper">
+            <img src="assets/icons/launch.svg" alt="Deployment Support" class="timeline-icon" role="img">
           </div>
         </div>
       </div>
@@ -244,48 +258,8 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-grid">
-
-        <div class="footer-brand">
-          <p class="footer-logo">Media &amp; Communications</p>
-          <p class="footer-tagline">Media &amp; Communications is a division of <a href="https://www.integral-ed.com/" class="footer-parent-link" target="_blank" rel="noopener noreferrer">Integral Ed Services</a>. An educator led learning design firm based in Austin, TX. Serving Education Organizations since 2011.</p>
-        </div>
-
-        <nav class="footer-nav" aria-label="Footer navigation">
-          <h3 class="footer-nav-heading">Pages</h3>
-          <ul role="list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#what-we-do">What We Do</a></li>
-            <li><a href="#case-studies">Case Studies</a></li>
-            <li><a href="request-demo.html">Request a Demo</a></li>
-          </ul>
-        </nav>
-
-        <nav class="footer-nav" aria-label="Service area microsites">
-          <h3 class="footer-nav-heading">Service Areas</h3>
-          <ul role="list">
-            <li><a href="https://www.integralelearning.com/" target="_blank" rel="noopener noreferrer">eLearning &amp; Blended Learning</a></li>
-            <li><a href="https://www.integralplatforms.com/" target="_blank" rel="noopener noreferrer">Platforms &amp; LMS</a></li>
-            <li><a href="https://www.integralcapacity.com/" target="_blank" rel="noopener noreferrer">Technical Assistance</a></li>
-            <li><a href="https://www.integralcareerpathways.com/" target="_blank" rel="noopener noreferrer">Career Connected Learning</a></li>
-            <li><a href="https://edugrowthstrategy.com/" target="_blank" rel="noopener noreferrer">Growth Strategy</a></li>
-            <li><a href="https://www.integralmediadesign.com/" target="_blank" rel="noopener noreferrer">Media &amp; Communications</a></li>
-          </ul>
-        </nav>
-
-        <div class="footer-contact">
-          <h3 class="footer-nav-heading">Get in Touch</h3>
-          <a href="https://www.integral-ed.com/contact/" class="btn btn-primary footer-contact-btn" target="_blank" rel="noopener noreferrer">Talk With Our Team</a>
-        </div>
-
-      </div>
-      <p class="footer-copy">&copy; <span id="footer-year"></span> Integral Ed Services. All rights reserved.</p>
-    </div>
-  </footer>
-  <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+  <!-- Footer (injected from vendor/integralthemes/components/footer.html at build time) -->
+  <!-- FOOTER_INJECT -->
 
   <!-- PDF Gallery Modal -->
   <div id="pdf-modal" class="popout-frame" role="dialog" aria-modal="true" aria-label="Sales Sheets for Sub-Brands" data-pdf-src="assets/Media/Sales%20Sheets%20for%20Sub-Brands.pdf">
